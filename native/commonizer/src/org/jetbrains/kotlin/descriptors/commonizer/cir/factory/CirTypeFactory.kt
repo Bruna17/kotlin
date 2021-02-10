@@ -5,6 +5,7 @@
 
 package org.jetbrains.kotlin.descriptors.commonizer.cir.factory
 
+import kotlinx.metadata.KmType
 import org.jetbrains.kotlin.descriptors.*
 import org.jetbrains.kotlin.descriptors.annotations.Annotations
 import org.jetbrains.kotlin.descriptors.commonizer.cir.*
@@ -27,6 +28,11 @@ object CirTypeFactory {
     private val classTypeInterner = Interner<CirClassType>()
     private val typeAliasTypeInterner = Interner<CirTypeAliasType>()
     private val typeParameterTypeInterner = Interner<CirTypeParameterType>()
+
+    fun create(source: KmType, useAbbreviation: Boolean = true): CirType {
+        // TODO: implement
+        return StandardTypes.ANY
+    }
 
     fun create(source: KotlinType, useAbbreviation: Boolean = true): CirType = source.unwrap().run {
         when (this) {
